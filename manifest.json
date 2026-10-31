@@ -1,0 +1,10 @@
+{
+  "name":"Rotas • Meta",
+  "short_name":"Rotas Meta",
+  "start_url":"./index.html",
+  "display":"standalone",
+  "background_color":"#08080b",
+  "theme_color":"#09090b",
+  "lang":"pt-BR",
+  "icons":[]
+}
