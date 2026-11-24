@@ -1,178 +1,103 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#09090b">
-<title>Rotas • Meta</title>
-<link rel="manifest" href="manifest.json">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505"><title>Meta 50K</title><link rel="manifest" href="manifest.json">
 <style>
-:root{--bg:#08080b;--card:#121218;--card2:#17171f;--purple:#9b5cff;--purple2:#6d28d9;--text:#f7f7fb;--muted:#a5a5b5;--line:#282833;--danger:#ef4444}
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-button,input,select,textarea{font:inherit} button{cursor:pointer}
-.wrap{max-width:900px;margin:auto;padding:18px 14px 40px}
-header{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
-h1{font-size:24px;margin:0}.sub{color:var(--muted);font-size:13px;margin-top:3px}
-.badge{background:#211335;color:#c9a6ff;border:1px solid #43226f;padding:7px 10px;border-radius:999px;font-size:12px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
-.label{font-size:12px;color:var(--muted)}.big{font-size:25px;font-weight:800;margin-top:4px}.purple{color:#c49aff}
-button.primary{width:100%;background:linear-gradient(135deg,var(--purple),var(--purple2));color:white;border:0;border-radius:12px;padding:13px;font-weight:800}
-button.secondary{background:var(--card2);color:white;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.between{justify-content:space-between}
-input,select,textarea{width:100%;background:#0e0e13;color:white;border:1px solid #30303c;border-radius:10px;padding:11px;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--purple)}textarea{min-height:70px;resize:vertical}
-.field{margin-bottom:10px}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}
-.tabs{display:flex;gap:6px;overflow:auto;margin:10px 0 14px}.tab{white-space:nowrap;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:#bbb}.tab.active{background:#2a1646;color:#d8bcff;border-color:#7041a9}
-.hidden{display:none!important}.pill{font-size:11px;border-radius:999px;padding:4px 7px;background:#24242d;color:#ccc}
-.item{padding:12px 0;border-bottom:1px solid var(--line)}.item:last-child{border-bottom:0}
-.item strong{font-size:14px}.item small{color:var(--muted)}.money{font-weight:800}.danger{color:#ff7777}
-.monthbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}.monthbar button{padding:7px 11px}
-.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.dow{text-align:center;color:#777;font-size:11px;padding:4px}
-.day{min-height:74px;background:#0e0e13;border:1px solid #25252f;border-radius:9px;padding:6px;overflow:hidden}.day.empty{background:transparent;border:0}.day.today{border-color:var(--purple)}
-.daynum{font-size:11px;color:#aaa}.daytotal{font-size:12px;font-weight:800;margin-top:7px;color:#d2b8ff}.dayroutes{font-size:10px;color:#888;margin-top:2px}
-.progress{height:10px;background:#272730;border-radius:99px;overflow:hidden;margin-top:8px}.bar{height:100%;background:linear-gradient(90deg,var(--purple2),var(--purple));width:0}
-.modal{position:fixed;inset:0;background:#000b;display:flex;align-items:flex-end;justify-content:center;padding:10px;z-index:10}.modalbox{width:min(600px,100%);background:#111118;border:1px solid #333340;border-radius:18px;padding:16px;max-height:92vh;overflow:auto}
-@media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}.wrap{padding-top:28px}.modal{align-items:center}}
-</style>
-</head>
-<body>
-<div class="wrap">
-<header><div><h1>Rotas • Meta</h1><div class="sub">Seu controle de trabalho e dinheiro</div></div><span class="badge">Mercado Livre</span></header>
-
-<div class="grid">
-<div class="card"><div class="label">Mês atual</div><div class="big purple" id="monthTotal">R$ 0,00</div></div>
-<div class="card"><div class="label">Quinzena atual</div><div class="big" id="fortnightTotal">R$ 0,00</div></div>
-<div class="card"><div class="label">Total de lançamentos</div><div class="big" id="countTotal">0</div></div>
-<div class="card"><div class="label">Média por lançamento</div><div class="big" id="avgTotal">R$ 0,00</div></div>
+:root{color-scheme:dark;--bg:#050505;--panel:#101010;--panel2:#171717;--line:#292929;--white:#f5f5f5;--muted:#999;--soft:#cfcfcf;--red:#ff6969;--green:#b8f2c2}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.wrap{max-width:900px;margin:auto;padding:20px 14px 42px}header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px}h1{font-size:25px;letter-spacing:-.8px;margin:0}h2{font-size:19px;margin:0 0 14px}h3{font-size:16px;margin:0 0 12px}.sub,.muted{color:var(--muted);font-size:12px}.tag{border:1px solid #555;border-radius:999px;padding:6px 10px;font-size:11px;color:#ddd}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:15px;margin-bottom:12px}.label{font-size:12px;color:var(--muted)}.value{font-size:23px;font-weight:800;letter-spacing:-.5px;margin-top:4px}.white{color:#fff}.mutedvalue{color:#bbb}
+.progress{height:7px;background:#292929;border-radius:9px;overflow:hidden;margin-top:10px}.bar{height:100%;background:#eee;width:0}
+nav{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:15px 0}.tab{background:#101010;border:1px solid #303030;color:#aaa;border-radius:11px;padding:11px 4px;font-size:12px;font-weight:650}.tab.active{background:#eee;color:#080808;border-color:#eee}
+button.primary{background:#f2f2f2;color:#050505;border:0;border-radius:11px;padding:13px 15px;font-weight:800;width:100%}button.secondary{background:#171717;color:#eee;border:1px solid #3a3a3a;border-radius:10px;padding:9px 12px}button.danger{color:#ff8b8b;border-color:#633}
+.field{margin:0 0 11px}.field label{display:block;color:#aaa;font-size:12px;margin-bottom:5px}input,select,textarea{width:100%;padding:11px;background:#080808;color:#fff;border:1px solid #383838;border-radius:10px;outline:none}input:focus,select:focus,textarea:focus{border-color:#ddd}textarea{min-height:65px}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.between{justify-content:space-between}.item{padding:12px 0;border-bottom:1px solid var(--line)}.item:last-child{border:0}.amount{font-weight:800}.pill{font-size:10px;color:#bbb;border:1px solid #444;border-radius:30px;padding:3px 7px}.green{color:var(--green)}.red{color:var(--red)}
+.hidden{display:none!important}.empty{color:#888;font-size:13px;padding:15px 0}.sectionhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:8px}
+.modal{position:fixed;inset:0;background:#000c;display:flex;align-items:flex-end;justify-content:center;padding:10px;z-index:5}.modalbox{width:min(600px,100%);max-height:92vh;overflow:auto;background:#111;border:1px solid #444;border-radius:18px;padding:17px}
+@media(min-width:650px){.cards{grid-template-columns:repeat(4,1fr)}.wrap{padding-top:28px}.modal{align-items:center}}
+</style></head>
+<body><main class="wrap">
+<header><div><h1>META 50K</h1><div class="sub">Controle financeiro • constância todos os dias</div></div><span class="tag">DARK / MONO</span></header>
+<div class="cards">
+<div class="card"><div class="label">Meta acumulada</div><div class="value" id="goalTotal">R$ 0,00</div><div class="progress"><div class="bar" id="goalBar"></div></div><div class="muted" id="goalPct">0% da meta</div></div>
+<div class="card"><div class="label">A receber</div><div class="value" id="topReceivable">R$ 0,00</div><div class="muted">Rotas ainda não pagas</div></div>
+<div class="card"><div class="label">Disponível</div><div class="value" id="topAvailable">R$ 0,00</div><div class="muted">Saldo em mãos e na conta</div></div>
+<div class="card"><div class="label">Despesas registradas</div><div class="value" id="topExpenses">R$ 0,00</div><div class="muted">Total de saídas</div></div>
 </div>
-
-<div class="card">
-<div class="row between"><div><div class="label">Meta</div><div class="big" id="goalText">R$ 0,00 / R$ 50.000</div></div></div>
-<div class="progress"><div class="bar" id="goalBar"></div></div>
+<nav>
+<button class="tab active" data-tab="routes">Rotas</button><button class="tab" data-tab="receivables">A receber</button><button class="tab" data-tab="balance">Disponível</button><button class="tab" data-tab="expenses">Despesas</button>
+</nav>
+<section id="routes">
+<div class="sectionhead"><h2>Rotas realizadas</h2><button class="secondary" id="addRoute">＋ Registrar rota</button></div>
+<div class="cards">
+<div class="card"><div class="label">Faturado neste mês</div><div class="value" id="monthRevenue">R$ 0,00</div></div>
+<div class="card"><div class="label">Quinzena atual</div><div class="value" id="currentFortnight">R$ 0,00</div></div>
+<div class="card"><div class="label">Rotas registradas</div><div class="value" id="routeCount">0</div></div>
+<div class="card"><div class="label">Média por rota</div><div class="value" id="routeAverage">R$ 0,00</div></div>
 </div>
-
-<div class="tabs">
-<button class="tab active" data-tab="home">Resumo</button><button class="tab" data-tab="calendar">Calendário</button><button class="tab" data-tab="history">Histórico</button><button class="tab" data-tab="bills">Contas</button>
-</div>
-
-<section id="home">
-<div class="card">
-<h3>Fechamento do mês</h3>
-<div class="grid">
-<div><div class="label">Faturamento do mês</div><div class="big" id="homeMonth">R$ 0,00</div></div>
-<div><div class="label">Contas da casa</div><div class="big" id="homeBills">R$ 0,00</div></div>
-<div><div class="label">Disponível</div><div class="big purple" id="homeAvailable">R$ 0,00</div></div>
-<div><div class="label">Projeção do mês</div><div class="big" id="projection">R$ 0,00</div></div>
-</div>
-</div>
-<div class="card">
-<h3>Quinzenas</h3>
-<div class="grid">
-<div><div class="label">1ª quinzena · 1–15</div><div class="big" id="q1">R$ 0,00</div></div>
-<div><div class="label">2ª quinzena · 16–fim</div><div class="big" id="q2">R$ 0,00</div></div>
-</div>
-</div>
-<button class="primary" id="addBtn">＋ Adicionar lançamento</button>
+<div class="card"><div class="sectionhead"><h3>Histórico de rotas</h3><span class="pill">Mais recentes primeiro</span></div><div id="routeList"></div></div>
 </section>
-
-<section id="calendar" class="hidden">
-<div class="card">
-<div class="monthbar"><button class="secondary" id="prevMonth">‹</button><strong id="calTitle"></strong><button class="secondary" id="nextMonth">›</button></div>
-<div class="calendar" id="calendarGrid"></div>
-</div>
+<section id="receivables" class="hidden">
+<h2>Valores a receber</h2><p class="sub">As rotas são agrupadas pela data de trabalho. Quando o pagamento cair, confirme aqui para transferir o valor ao saldo disponível.</p>
+<div class="card"><div class="label">Total pendente</div><div class="value" id="receivableTotal">R$ 0,00</div></div>
+<div id="receivableList"></div>
 </section>
-
-<section id="history" class="hidden">
-<div class="card"><div class="row between"><h3>Histórico completo</h3><button class="secondary" id="clearAll">Apagar tudo</button></div><div id="historyList"></div></div>
+<section id="balance" class="hidden">
+<h2>Dinheiro disponível</h2><p class="sub">Registre entradas e saídas reais. Confirmar o pagamento de uma quinzena também atualiza este saldo automaticamente.</p>
+<div class="card"><div class="label">Saldo atual</div><div class="value" id="balanceTotal">R$ 0,00</div><div class="row" style="margin-top:13px"><button class="secondary" id="addIncome">＋ Entrada</button><button class="secondary" id="addWithdrawal">− Saída</button></div></div>
+<div class="card"><h3>Movimentações do saldo</h3><div id="balanceList"></div></div>
 </section>
-
-<section id="bills" class="hidden">
-<div class="card">
-<div class="row between"><h3>Contas da casa</h3><button class="secondary" id="addBill">＋ Conta</button></div>
-<div class="sub">Esses valores entram no cálculo do disponível do mês. Não são descontados automaticamente do faturamento diário.</div>
-<div id="billList"></div>
-</div>
+<section id="expenses" class="hidden">
+<div class="sectionhead"><h2>Despesas</h2><button class="secondary" id="addExpense">＋ Nova despesa</button></div>
+<div class="cards"><div class="card"><div class="label">Total de despesas</div><div class="value" id="expenseTotal">R$ 0,00</div></div><div class="card"><div class="label">Despesas neste mês</div><div class="value" id="monthExpense">R$ 0,00</div></div></div>
+<div class="card"><h3>Histórico de despesas</h3><div id="expenseList"></div></div>
 </section>
-</div>
-
-<div class="modal hidden" id="modal"><div class="modalbox">
-<div class="row between"><h2>Novo lançamento</h2><button class="secondary" id="closeModal">✕</button></div>
-<form id="entryForm">
-<div class="grid">
-<div class="field"><label>Data</label><input id="date" type="date" required></div>
-<div class="field"><label>Horas trabalhadas</label><input id="hours" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ex.: 8"></div>
-</div>
-<div class="field"><label>Modalidade</label><select id="type"><option value="Rota">🚚 Rota — R$ 230</option><option value="Ambulância">🚑 Ambulância — R$ 230</option><option value="Apoio">🤝 Apoio — valor negociável</option></select></div>
-<div class="field" id="routeField"><label>Número da rota</label><input id="route" type="text" inputmode="numeric" placeholder="Ex.: 123456"></div>
-<div class="field"><label>Valor recebido (R$)</label><input id="value" type="number" min="0" step="0.01" inputmode="decimal" required></div>
-<div class="field"><label>Observação (opcional)</label><textarea id="note" placeholder="Ex.: dia puxado, duas rotas..."></textarea></div>
-<button class="primary" type="submit">Salvar lançamento</button>
-</form>
-</div></div>
-
+</main>
+<div class="modal hidden" id="modal"><div class="modalbox"><div class="sectionhead"><h2 id="modalTitle">Novo registro</h2><button class="secondary" id="closeModal">Fechar</button></div><form id="recordForm"><div id="formFields"></div><button class="primary" type="submit">Salvar registro</button></form></div></div>
 <script>
-const KEY='rotasMeta_v3_entries', BILLS='rotasMeta_v3_bills', GOAL='rotasMeta_v3_goal';
-let entries=JSON.parse(localStorage.getItem(KEY)||'[]');
-let bills=JSON.parse(localStorage.getItem(BILLS)||'[]');
-let goal=Number(localStorage.getItem(GOAL)||50000);
-let viewDate=new Date();
-
+const KEYS={routes:'rotasMeta_v3_entries',bills:'rotasMeta_v3_bills',expenses:'meta50k_expenses_v1',balance:'meta50k_balance_v1',paid:'meta50k_paid_v1'};
+const read=(k,f=[])=>{try{return JSON.parse(localStorage.getItem(k)||JSON.stringify(f))}catch{return f}};
+let routes=read(KEYS.routes),expenses=read(KEYS.expenses),balance=read(KEYS.balance),paid=read(KEYS.paid);
+const goal=50000;let mode='';
 const money=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(n)||0);
-const iso=d=>{const x=new Date(d);return x.toISOString().slice(0,10)};
-const monthKey=d=>{const x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')};
-const fmtDate=s=>new Date(s+'T12:00:00').toLocaleDateString('pt-BR');
-function save(){localStorage.setItem(KEY,JSON.stringify(entries));localStorage.setItem(BILLS,JSON.stringify(bills));render();}
-function monthEntries(date){let k=monthKey(date);return entries.filter(e=>monthKey(e.date+'T12:00:00')===k)}
-function total(arr){return arr.reduce((a,e)=>a+Number(e.value||0),0)}
+const localISO=d=>{let x=new Date(d.getTime()-d.getTimezoneOffset()*60000);return x.toISOString().slice(0,10)};
+const today=()=>localISO(new Date());
+const dateText=s=>new Date(s+'T12:00:00').toLocaleDateString('pt-BR');
+const monthKey=s=>s.slice(0,7);
+const sum=(a)=>a.reduce((t,x)=>t+Number(x.value||0),0);
+const id=()=>Date.now().toString()+Math.random().toString(36).slice(2,6);
+const save=()=>{localStorage.setItem(KEYS.routes,JSON.stringify(routes));localStorage.setItem(KEYS.expenses,JSON.stringify(expenses));localStorage.setItem(KEYS.balance,JSON.stringify(balance));localStorage.setItem(KEYS.paid,JSON.stringify(paid));render()};
+function payday(date){let d=new Date(date+'T12:00:00'),day=d.getDate();if(day<=15){return new Date(d.getFullYear(),d.getMonth()+1,25)}return new Date(d.getFullYear(),d.getMonth()+2,10)}
+function groupRoutes(){let m=new Map();routes.forEach(r=>{let day=Number(r.date.slice(8,10)),key=r.date.slice(0,7)+'-'+(day<=15?'1':'2');if(!m.has(key))m.set(key,{key,from:day<=15?'01':'16',to:day<=15?'15':'fim do mês',routes:[],value:0,payday:payday(r.date)});let g=m.get(key);g.routes.push(r);g.value+=Number(r.value||0)});return [...m.values()].sort((a,b)=>a.payday-b.payday)}
+function isPaid(g){return paid.includes(g.key)}
+function available(){return sum(balance)}
+function listHTML(items,empty,render){return items.length?items.map(render).join(''):'<div class="empty">'+empty+'</div>'}
 function render(){
- const now=new Date(), me=monthEntries(now), q=now.getDate()<=15?me.filter(e=>new Date(e.date+'T12:00:00').getDate()<=15):me.filter(e=>new Date(e.date+'T12:00:00').getDate()>=16);
- const mt=total(me), qt=total(q), billTotal=bills.reduce((a,b)=>a+Number(b.value||0),0);
- document.getElementById('monthTotal').textContent=money(mt);document.getElementById('fortnightTotal').textContent=money(qt);
- document.getElementById('countTotal').textContent=entries.length;document.getElementById('avgTotal').textContent=money(entries.length?total(entries)/entries.length:0);
- document.getElementById('goalText').textContent=money(entries.reduce((a,e)=>a+Number(e.value||0),0))+' / '+money(goal);
- document.getElementById('goalBar').style.width=Math.min(100,total(entries)/goal*100)+'%';
- document.getElementById('homeMonth').textContent=money(mt);document.getElementById('homeBills').textContent=money(billTotal);document.getElementById('homeAvailable').textContent=money(mt-billTotal);
- document.getElementById('q1').textContent=money(me.filter(e=>new Date(e.date+'T12:00:00').getDate()<=15).reduce((a,e)=>a+Number(e.value),0));
- document.getElementById('q2').textContent=money(me.filter(e=>new Date(e.date+'T12:00:00').getDate()>=16).reduce((a,e)=>a+Number(e.value),0));
- const days=Math.max(1,now.getDate()), daysInMonth=new Date(now.getFullYear(),now.getMonth()+1,0).getDate();
- document.getElementById('projection').textContent=money(mt/days*daysInMonth);
- renderCalendar();renderHistory();renderBills();
+ const now=today(),mk=now.slice(0,7),monthRoutes=routes.filter(r=>monthKey(r.date)===mk),current=routes.filter(r=>monthKey(r.date)===mk&&(Number(r.date.slice(8,10))<=(Number(now.slice(8,10))<=15?15:31))&&(Number(r.date.slice(8,10))>=(Number(now.slice(8,10))<=15?1:16)));
+ const groups=groupRoutes(),pending=groups.filter(g=>!isPaid(g)),pendingTotal=pending.reduce((a,g)=>a+g.value,0),expenseMonth=expenses.filter(e=>monthKey(e.date)===mk);
+ const totalExpenses=sum(expenses),totalBalance=available(),saved=Math.max(0,totalBalance),pct=Math.min(100,saved/goal*100);
+ document.getElementById('goalTotal').textContent=money(saved);document.getElementById('goalBar').style.width=pct+'%';document.getElementById('goalPct').textContent=pct.toFixed(1).replace('.',',')+'% da meta';
+ document.getElementById('topReceivable').textContent=money(pendingTotal);document.getElementById('topAvailable').textContent=money(totalBalance);document.getElementById('topExpenses').textContent=money(totalExpenses);
+ document.getElementById('monthRevenue').textContent=money(sum(monthRoutes));document.getElementById('currentFortnight').textContent=money(sum(current));document.getElementById('routeCount').textContent=routes.length;document.getElementById('routeAverage').textContent=money(routes.length?sum(routes)/routes.length:0);
+ document.getElementById('routeList').innerHTML=listHTML([...routes].sort((a,b)=>b.date.localeCompare(a.date)), 'Nenhuma rota registrada.',r=>'<div class="item"><div class="row between"><strong>'+esc(r.type||'Rota')+(r.route?' · #'+esc(r.route):'')+'</strong><span class="amount">'+money(r.value)+'</span></div><div class="row between"><span class="muted">'+dateText(r.date)+(r.hours?' · '+r.hours+'h':'')+(r.note?' · '+esc(r.note):'')+'</span><button class="secondary" onclick="deleteRoute(\''+r.id+'\')">Excluir</button></div></div>');
+ document.getElementById('receivableTotal').textContent=money(pendingTotal);
+ document.getElementById('receivableList').innerHTML=listHTML(groups,'Nenhuma quinzena registrada.',g=>'<div class="card"><div class="row between"><strong>'+g.from+'–'+g.to+' · '+g.key.slice(0,7)+'</strong><span class="pill">'+(isPaid(g)?'PAGO':'PENDENTE')+'</span></div><div class="value">'+money(g.value)+'</div><div class="muted">Previsão de pagamento: '+g.payday.toLocaleDateString('pt-BR')+' · '+g.routes.length+' lançamento(s)</div>'+(isPaid(g)?'<div class="muted green" style="margin-top:8px">Pagamento confirmado e lançado no disponível.</div>':'<button class="primary" style="margin-top:12px" onclick="confirmPayment(\''+g.key+'\')">Confirmar que recebi</button>')+'</div>');
+ document.getElementById('balanceTotal').textContent=money(totalBalance);document.getElementById('balanceList').innerHTML=listHTML([...balance].sort((a,b)=>b.date.localeCompare(a.date)),'Nenhuma movimentação registrada.',b=>'<div class="item"><div class="row between"><strong>'+esc(b.label)+'</strong><span class="amount '+(b.value>=0?'green':'red')+'">'+(b.value>=0?'+':'')+money(b.value)+'</span></div><span class="muted">'+dateText(b.date)+'</span></div>');
+ document.getElementById('expenseTotal').textContent=money(totalExpenses);document.getElementById('monthExpense').textContent=money(sum(expenseMonth));document.getElementById('expenseList').innerHTML=listHTML([...expenses].sort((a,b)=>b.date.localeCompare(a.date)),'Nenhuma despesa registrada.',e=>'<div class="item"><div class="row between"><strong>'+esc(e.category)+'</strong><span class="amount red">−'+money(e.value)+'</span></div><div class="row between"><span class="muted">'+dateText(e.date)+(e.note?' · '+esc(e.note):'')+'</span><button class="secondary" onclick="deleteExpense(\''+e.id+'\')">Excluir</button></div></div>');
 }
-function renderCalendar(){
- const y=viewDate.getFullYear(),m=viewDate.getMonth(),first=new Date(y,m,1),last=new Date(y,m+1,0);
- document.getElementById('calTitle').textContent=first.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
- const g=document.getElementById('calendarGrid');g.innerHTML=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(x=>'<div class="dow">'+x+'</div>').join('');
- for(let i=0;i<first.getDay();i++)g.innerHTML+='<div class="day empty"></div>';
- for(let d=1;d<=last.getDate();d++){
-  let s=iso(new Date(y,m,d)), es=entries.filter(e=>e.date===s), t=total(es), today=s===iso(new Date());
-  g.innerHTML+=`<div class="day ${today?'today':''}" onclick="openDay('${s}')"><div class="daynum">${d}</div><div class="daytotal">${t?money(t):'—'}</div><div class="dayroutes">${es.length?es.length+' lanç.':''}</div></div>`;
- }
-}
-function openDay(s){openModal(s)}
-function renderHistory(){
- const list=document.getElementById('historyList');let arr=[...entries].sort((a,b)=>(b.date+b.id).localeCompare(a.date+a.id));
- if(!arr.length){list.innerHTML='<div class="sub">Nenhum lançamento ainda.</div>';return}
- list.innerHTML=arr.map(e=>`<div class="item"><div class="row between"><div><strong>${e.type}</strong> ${e.route?'<span class="pill">rota #'+esc(e.route)+'</span>':''}</div><span class="money">${money(e.value)}</span></div><small>${fmtDate(e.date)}${e.hours?' · '+e.hours+'h':''}${e.note?' · '+esc(e.note):''}</small><div style="margin-top:7px"><button class="secondary danger" onclick="delEntry('${e.id}')">Excluir</button></div></div>`).join('');
-}
-function renderBills(){
- const list=document.getElementById('billList');if(!bills.length){list.innerHTML='<div class="sub" style="margin-top:12px">Nenhuma conta cadastrada.</div>';return}
- list.innerHTML=bills.map(b=>`<div class="item"><div class="row between"><div><strong>${esc(b.name)}</strong></div><span class="money">${money(b.value)}</span></div><button class="secondary danger" onclick="delBill('${b.id}')">Excluir</button></div>`).join('');
-}
-function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-function openModal(date=iso(new Date())){document.getElementById('modal').classList.remove('hidden');document.getElementById('date').value=date;document.getElementById('type').value='Rota';document.getElementById('value').value=230;document.getElementById('route').value='';document.getElementById('hours').value='';document.getElementById('note').value='';toggleRoute()}
-function closeModal(){document.getElementById('modal').classList.add('hidden')}
-function toggleRoute(){document.getElementById('routeField').classList.toggle('hidden',document.getElementById('type').value==='Apoio');if(document.getElementById('type').value!=='Apoio')document.getElementById('value').value=230}
-document.getElementById('type').addEventListener('change',toggleRoute);
-document.getElementById('entryForm').addEventListener('submit',e=>{e.preventDefault();entries.push({id:Date.now().toString(),date:date.value,type:type.value,route:route.value.trim(),value:Number(value.value),hours:Number(hours.value||0),note:note.value.trim()});save();closeModal()});
-function delEntry(id){if(confirm('Excluir este lançamento?')){entries=entries.filter(e=>e.id!==id);save()}}
-function delBill(id){if(confirm('Excluir esta conta?')){bills=bills.filter(b=>b.id!==id);save()}}
-document.getElementById('clearAll').onclick=()=>{if(confirm('ATENÇÃO: isso apaga TODO o histórico. Continuar?')){entries=[];save()}}
-document.getElementById('addBill').onclick=()=>{let n=prompt('Nome da conta:');if(!n)return;let v=prompt('Valor da conta (R$):','0');if(v===null)return;bills.push({id:Date.now().toString(),name:n,value:Number(v.replace(',','.'))||0});save()}
-document.getElementById('addBtn').onclick=()=>openModal();document.getElementById('closeModal').onclick=closeModal;
-document.getElementById('prevMonth').onclick=()=>{viewDate.setMonth(viewDate.getMonth()-1);renderCalendar()};document.getElementById('nextMonth').onclick=()=>{viewDate.setMonth(viewDate.getMonth()+1);renderCalendar()};
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('section').forEach(s=>s.classList.add('hidden'));document.getElementById(b.dataset.tab).classList.remove('hidden')});
-if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function openForm(m){mode=m;let title='',fields='';
+if(m==='route'){title='Registrar rota';fields='<div class="field"><label>Data da rota</label><input name="date" type="date" value="'+today()+'" required></div><div class="field"><label>Modalidade</label><select name="type"><option>Rota</option><option>Ambulância</option><option>Apoio</option></select></div><div class="field"><label>Número da rota (opcional)</label><input name="route"></div><div class="field"><label>Valor faturado (R$)</label><input name="value" type="number" min="0" step=".01" value="230" required></div><div class="field"><label>Horas trabalhadas</label><input name="hours" type="number" min="0" step=".5"></div><div class="field"><label>Observação</label><textarea name="note"></textarea></div>'}
+if(m==='expense'){title='Registrar despesa';fields='<div class="field"><label>Data</label><input name="date" type="date" value="'+today()+'" required></div><div class="field"><label>Categoria / descrição</label><input name="category" placeholder="Ex.: alimentação, aluguel da moto" required></div><div class="field"><label>Valor (R$)</label><input name="value" type="number" min=".01" step=".01" required></div><div class="field"><label>Observação</label><textarea name="note"></textarea></div><p class="muted">A despesa fica registrada separadamente. Para atualizar o saldo real, registre também uma saída na aba Disponível.</p>'}
+if(m==='income'||m==='withdrawal'){title=m==='income'?'Adicionar dinheiro disponível':'Registrar saída do disponível';fields='<div class="field"><label>Data</label><input name="date" type="date" value="'+today()+'" required></div><div class="field"><label>Descrição</label><input name="label" placeholder="'+(m==='income'?'Ex.: dinheiro inicial, extra':'Ex.: pagamento de conta')+'" required></div><div class="field"><label>Valor (R$)</label><input name="value" type="number" min=".01" step=".01" required></div>'}
+document.getElementById('modalTitle').textContent=title;document.getElementById('formFields').innerHTML=fields;document.getElementById('modal').classList.remove('hidden')}
+document.getElementById('recordForm').addEventListener('submit',e=>{e.preventDefault();let f=new FormData(e.target),v=Number(f.get('value'));if(mode==='route')routes.push({id:id(),date:f.get('date'),type:f.get('type'),route:f.get('route'),value:v,hours:Number(f.get('hours')||0),note:f.get('note')});if(mode==='expense')expenses.push({id:id(),date:f.get('date'),category:f.get('category'),value:v,note:f.get('note')});if(mode==='income'||mode==='withdrawal')balance.push({id:id(),date:f.get('date'),label:f.get('label'),value:mode==='income'?v:-v});document.getElementById('modal').classList.add('hidden');e.target.reset();save()});
+function confirmPayment(key){let g=groupRoutes().find(x=>x.key===key);if(!g||isPaid(g))return;if(confirm('Confirmar recebimento de '+money(g.value)+'? Esse valor será adicionado ao saldo disponível.')){paid.push(key);balance.push({id:id(),date:today(),label:'Pagamento ML · '+key,value:g.value});save()}}
+function deleteRoute(id){if(confirm('Excluir esta rota?')){routes=routes.filter(x=>x.id!==id);save()}}
+function deleteExpense(id){if(confirm('Excluir esta despesa?')){expenses=expenses.filter(x=>x.id!==id);save()}}
+document.getElementById('addRoute').onclick=()=>openForm('route');document.getElementById('addExpense').onclick=()=>openForm('expense');document.getElementById('addIncome').onclick=()=>openForm('income');document.getElementById('addWithdrawal').onclick=()=>openForm('withdrawal');document.getElementById('closeModal').onclick=()=>document.getElementById('modal').classList.add('hidden');
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));['routes','receivables','balance','expenses'].forEach(id=>document.getElementById(id).classList.toggle('hidden',id!==b.dataset.tab))});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 render();
-</script>
-</body></html>
+</script></body></html>
