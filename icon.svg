@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#000"/><circle cx="256" cy="256" r="168" fill="none" stroke="#fff" stroke-width="18"/><circle cx="256" cy="256" r="132" fill="none" stroke="#777" stroke-width="3"/><path d="M174 310V202h35l47 63 47-63h35v108h-38v-53l-44 56-44-56v53z" fill="#fff"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="112" fill="#000"/>
+<rect x="9" y="9" width="494" height="494" rx="104" fill="none" stroke="#242424" stroke-width="8"/>
+<g fill="#fff">
+<path d="M108 278h52v96h-52zM190 225h52v149h-52zM272 170h52v204h-52z"/>
+<path d="M112 226 220 145l68 28 103-95 22 24-117 108-70-29-96 72z"/>
+<path d="m374 70 64-18-18 64z"/>
+</g>
+<text x="256" y="435" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="76" font-weight="900" letter-spacing="-3">META 50K</text>
+</svg>
