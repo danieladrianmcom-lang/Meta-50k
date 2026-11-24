@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#000000"><title>Meta 50K</title><link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Meta 50K"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icon.svg"><title>Meta 50K</title><link rel="manifest" href="manifest.json">
 <style>
 :root{color-scheme:dark;--bg:#000;--panel:#080808;--panel2:#101010;--line:transparent;--white:#fff;--muted:#888;--soft:#ddd;--red:#ff7777;--green:#fff}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}
-.wrap{max-width:900px;margin:auto;padding:20px 14px 42px}header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px}h1{font-size:25px;letter-spacing:-.8px;margin:0}h2{font-size:19px;margin:0 0 14px}h3{font-size:16px;margin:0 0 12px}.sub,.muted{color:var(--muted);font-size:12px}.tag{border:0;border-radius:999px;padding:6px 10px;font-size:11px;color:#aaa;background:#111}
+.wrap{max-width:900px;margin:auto;padding:20px 14px 42px}header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px}.brand{display:flex;align-items:center;gap:11px;min-width:0}.brand img{width:52px;height:52px;object-fit:contain}.brand h1{font-size:25px;letter-spacing:-.8px}.head-actions{display:flex;align-items:center;gap:8px}#installApp{display:none;background:#fff;color:#000;border:0;border-radius:999px;padding:9px 12px;font-size:12px;font-weight:800}h1{font-size:25px;letter-spacing:-.8px;margin:0}h2{font-size:19px;margin:0 0 14px}h3{font-size:16px;margin:0 0 12px}.sub,.muted{color:var(--muted);font-size:12px}.tag{border:0;border-radius:999px;padding:6px 10px;font-size:11px;color:#aaa;background:#111}
 .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{background:var(--panel);border:0;border-radius:18px;padding:16px;margin-bottom:12px}.label{font-size:12px;color:var(--muted)}.value{font-size:23px;font-weight:800;letter-spacing:-.5px;margin-top:4px}.white{color:#fff}.mutedvalue{color:#bbb}
 .progress{height:7px;background:#292929;border-radius:9px;overflow:hidden;margin-top:10px}.bar{height:100%;background:#eee;width:0}
 nav{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:15px 0}.tab{background:#090909;border:0;color:#999;border-radius:12px;padding:12px 4px;font-size:12px;font-weight:650}.tab.active{background:#fff;color:#000;border-color:transparent}
@@ -18,7 +18,7 @@ button.primary{background:#f2f2f2;color:#050505;border:0;border-radius:11px;padd
 @media(min-width:650px){.cards{grid-template-columns:repeat(4,1fr)}.wrap{padding-top:28px}.modal{align-items:center}}
 </style></head>
 <body><main class="wrap">
-<header><div><h1>META 50K</h1><div class="sub">Controle financeiro • constância todos os dias</div></div><span class="tag">DARK / MONO</span></header>
+<header><div class="brand"><img src="icon.svg" alt="Logo Meta 50K"><div><h1>META 50K</h1><div class="sub">DISCIPLINA • FOCO • CONQUISTA</div></div></div><div class="head-actions"><button id="installApp" type="button">Instalar app</button></div></header>
 <div class="cards">
 <div class="card"><div class="label">Meta acumulada</div><div class="value" id="goalTotal">R$ 0,00</div><div class="progress"><div class="bar" id="goalBar"></div></div><div class="muted" id="goalPct">0% da meta</div></div>
 <div class="card"><div class="label">A receber</div><div class="value" id="topReceivable">R$ 0,00</div><div class="muted">Rotas ainda não pagas</div></div>
@@ -98,6 +98,6 @@ function deleteRoute(id){if(confirm('Excluir esta rota?')){routes=routes.filter(
 function deleteExpense(id){if(confirm('Excluir esta despesa? O desconto correspondente também será removido do saldo.')){expenses=expenses.filter(x=>x.id!==id);balance=balance.filter(x=>x.expenseId!==id);save()}}
 document.getElementById('addRoute').onclick=()=>openForm('route');document.getElementById('addExpense').onclick=()=>openForm('expense');document.getElementById('addIncome').onclick=()=>openForm('income');document.getElementById('addWithdrawal').onclick=()=>openForm('withdrawal');document.getElementById('closeModal').onclick=()=>document.getElementById('modal').classList.add('hidden');
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));['routes','receivables','balance','expenses'].forEach(id=>document.getElementById(id).classList.toggle('hidden',id!==b.dataset.tab))});
-if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+let installPrompt=null;const installButton=document.getElementById('installApp');window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;installButton.style.display='inline-flex'});installButton.addEventListener('click',async()=>{if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installButton.style.display='none'}else{alert('No iPhone: toque em Compartilhar e depois em “Adicionar à Tela de Início”. No Android: abra o menu do navegador e escolha “Instalar app” ou “Adicionar à tela inicial”.')}});window.addEventListener('appinstalled',()=>{installButton.style.display='none'});if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 render();
 </script></body></html>
