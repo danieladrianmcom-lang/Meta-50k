@@ -2,8 +2,17 @@
   "name": "Meta 50K",
   "short_name": "Meta 50K",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#050505",
-  "theme_color": "#050505",
-  "description": "Controle financeiro pessoal Meta 50K."
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "description": "Controle financeiro pessoal Meta 50K.",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
 }
